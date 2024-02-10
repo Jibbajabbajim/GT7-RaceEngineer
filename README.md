@@ -8,10 +8,10 @@ Run like this (substitute with your own console's LAN IP address):
     python3 GT7-RaceEngineer.py <IP ADDRESS> <LANGUAGE> <VOICE> <TYRE TEMP>
 
 Where:
-    IP ADDRESS - This is your consoles ip address
-    LANGUAGE - This is the language of your race engineer. Current supported languages are "EN" and "SE".
-    VOICE - There are currently 3 different voices per language. Valid options are "1" "2" "3".
-    TYRE TEMP - This is the tyre temparature in degrees centigrade that will trigger the engineer. 
+IP ADDRESS - This is your consoles ip address
+LANGUAGE - This is the language of your race engineer. Current supported languages are "EN" and "SE".
+VOICE - There are currently 3 different voices per language. Valid options are "1" "2" "3".
+TYRE TEMP - This is the tyre temparature in degrees centigrade that will trigger the engineer. 
 
 Example:
 
