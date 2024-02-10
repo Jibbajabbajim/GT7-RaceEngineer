@@ -5,13 +5,22 @@ Python script to provide simple "race engineer" audio feedback while driving.
 
 Run like this (substitute with your own console's LAN IP address):
 
-    python3 GT7-RaceEngineer.py 129.168.1.123
+    python3 GT7-RaceEngineer.py <IP ADDRESS> <LANGUAGE> <VOICE> <TYRE TEMP>
+
+Where:
+    <IP ADDRESS> - This is your consoles ip address
+    <LANGUAGE> - This is the language of your race engineer. Current supported languages are "EN" and "SE".
+    <VOICE> - There are currently 3 different voices per language. Valid options are "1" "2" "3".
+    <TYRE TEMP> - This is the tyre temparature in degrees centigrade that will trigger the engineer. 
+
+Example:
+
+    python3 GT7-RaceEngineer.py 129.168.1.123 EN 1 120
 
 This work is based entirely on Bornhalls work found here:- https://github.com/Bornhall/gt7telemetry
 
-![Screenshot of output](https://user-images.githubusercontent.com/3602224/182450262-56992d54-409d-4fb7-bfec-35b04dc7f6aa.png)
-
 ## Requirements
-You will need python 3.x installed, and you need to install the salsa20 module via pip:
+You will need python 3.x installed, and you need to install the salsa20 and simpleaudio module via pip:
 
     pip3 install salsa20
+    pip3 install simpleaudio
