@@ -1,6 +1,7 @@
 import signal
 from datetime import datetime as dt
 from datetime import timedelta as td
+import os
 import socket
 import sys
 import struct
@@ -12,12 +13,6 @@ from salsa20 import Salsa20_xor
 
 # ansi prefix
 pref = "\033["
-
-overTemp = 0
-#wave_obj = sa.WaveObject.from_wave_file(".audio/high1.wav")
-wave_obj1 = sa.WaveObject.from_wave_file(".audio/tyres1.wav")
-wave_obj2 = sa.WaveObject.from_wave_file(".audio/tyres2.wav")
-wave_obj3 = sa.WaveObject.from_wave_file(".audio/tyres3.wav")
 
 # ports for send and receive data
 SendPort = 33739
@@ -38,11 +33,28 @@ sys.stdout.write(f'{pref}?25l')		# hide cursor
 sys.stdout.flush()
 
 # get ip address from command line
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
     ip = sys.argv[1]
+    language = sys.argv[2]
 else:
     print('Run like : python3 gt7telemetry.py <playstation-ip>')
     exit(1)
+
+absolute_path = os.path.dirname(__file__)
+full_path1 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot1.wav")
+full_path2 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot2.wav")
+full_path3 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot3.wav")
+full_path4 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot1.wav")
+full_path5 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot2.wav")
+full_path6 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot3.wav")
+
+overTemp = 0
+wave_obj1 = sa.WaveObject.from_wave_file(full_path1)
+wave_obj2 = sa.WaveObject.from_wave_file(full_path2)
+wave_obj3 = sa.WaveObject.from_wave_file(full_path3)
+wave_obj4 = sa.WaveObject.from_wave_file(full_path4)
+wave_obj5 = sa.WaveObject.from_wave_file(full_path5)
+wave_obj6 = sa.WaveObject.from_wave_file(full_path6)
 
 # Create a UDP socket and bind it
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -194,14 +206,26 @@ while True:
 					tyreMessage = random.randint(1,3)
 					#printAt(, 9, 1, bold=1)
 					if tyreMessage == 1:
-						play_obj1 = wave_obj1.play()
-						play_obj1.wait_done()
+						if language == "EN":
+							play_obj1 = wave_obj1.play()
+							play_obj1.wait_done()
+						else:
+							play_obj4 = wave_obj4.play()
+							play_obj4.wait_done()
 					if tyreMessage == 2:
-						play_obj2 = wave_obj2.play()
-						play_obj2.wait_done()
+						if language == "EN":
+							play_obj2 = wave_obj2.play()
+							play_obj2.wait_done()
+						else:
+							play_obj5 = wave_obj5.play()
+							play_obj5.wait_done()
 					if tyreMessage == 3:
-						play_obj3 = wave_obj3.play()
-						play_obj3.wait_done()
+						if language == "EN":
+							play_obj3 = wave_obj3.play()
+							play_obj3.wait_done()
+						else:
+							play_obj6 = wave_obj6.play()
+							play_obj6.wait_done()
 					overTemp = 1
 
 				#Play sound and delay
