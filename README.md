@@ -20,7 +20,7 @@ This is the tyre temparature in degrees centigrade that will trigger the enginee
 
 Example:
 
-    python3 GT7-RaceEngineer.py 129.168.1.123 EN 120
+    python3 GT7-RaceEngineer.py 129.168.1.123 EN 120.0
 
 VOICE
 There is currently only 1 voice per language. More voices will be added.
