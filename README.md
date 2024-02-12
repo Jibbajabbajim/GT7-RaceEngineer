@@ -27,7 +27,7 @@ VOICE
 There is currently only 1 voice per language. More voices will be added.
 
 ## Requirements
-You will need python 3.x installed, and you need to install the salsa20 and simpleaudio module via pip:
+You will need python 3.x installed, and you need to install the salsa20 and simpleaudio modules via pip:
 
     pip3 install salsa20
     pip3 install simpleaudio
@@ -41,6 +41,6 @@ TYRE TEMPERATURES - More information such as cold tyres warning and normal temp 
 
 FUEL/LAPS - FUEL/LAP summary triggered at each start finish line cross. Maybe an option to manually trigger feedback (button press)?
 
-STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race and provive feedback (e.g. "Two more laps needed in this stint"). Monitor tyreuse and percentage and provide feedback ("You are using too much tyres/fuel to last the stint". Calculate the number of laps remaining in the race? Not sure is this is possible yet.
+STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race and provide feedback (e.g. "Two more laps needed in this stint"). Monitor tyre use and percentage and provide feedback ("You are using too much tyres/fuel to last the stint". Calculate the number of laps remaining in the race? Not sure is this is possible yet.
 
 CONFIG FILE - As the number of parameters increases, a config file may make more sense.
