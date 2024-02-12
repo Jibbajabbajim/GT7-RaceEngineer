@@ -1,5 +1,6 @@
 # GT7-RaceEngineer
 Python script to provide simple "race engineer" audio feedback while driving.
+Current version only gives feedback when your tyres hit the temparatures you input. More functionality to be added in furture versions.
 
 This work is based entirely on Bornhalls work found here:- https://github.com/Bornhall/gt7telemetry
 
