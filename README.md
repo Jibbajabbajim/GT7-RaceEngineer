@@ -1,6 +1,6 @@
 # GT7-RaceEngineer
 Python script to provide simple "race engineer" audio feedback while driving.
-Current version only gives feedback when your tyres hit the temparatures you input. More functionality to be added in furture versions.
+Current version only gives feedback when your tyres hit the temperature you input. More functionality to be added in furture versions.
 
 This work is based entirely on Bornhalls work found here:- https://github.com/Bornhall/gt7telemetry
 
@@ -42,3 +42,5 @@ TYRE TEMPERATURES - More information such as cold tyres warning and normal temp 
 FUEL/LAPS - FUEL/LAP summary triggered at each start finish line cross.
 
 STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race and provive feedback (e.g. "Two more laps needed in this stint"). Monitor tyreuse and percentage and provide feedback ("You are using too much tyres/fuel to last the stint". Calculate the number of laps remaining in the race? Not sure is this is possible yet.
+
+CONFIG FILE - As the number of parameters increases, a config file may make more sense.
