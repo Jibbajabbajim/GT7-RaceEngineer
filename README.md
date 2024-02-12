@@ -39,7 +39,7 @@ VOICES - More voices will be added.
 
 TYRE TEMPERATURES - More information such as cold tyres warning and normal temp notification.
 
-FUEL/LAPS - FUEL/LAP summary triggered at each start finish line cross.
+FUEL/LAPS - FUEL/LAP summary triggered at each start finish line cross. Maybe an option to manually trigger feedback (button press)
 
 STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race and provive feedback (e.g. "Two more laps needed in this stint"). Monitor tyreuse and percentage and provide feedback ("You are using too much tyres/fuel to last the stint". Calculate the number of laps remaining in the race? Not sure is this is possible yet.
 
