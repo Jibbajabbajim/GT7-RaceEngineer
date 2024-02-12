@@ -7,3 +7,7 @@ EN_Voice3 = English (GB) Morgan 1.3x
 SE_Voice1 = Swedish Thomas 1.1x
 SE_Voice2 = Swedish Thomas 1.1x
 SE_Voice3 = Swedish Thomas 1.1x
+
+US_Voice1 = English (US) Morgan 1.3x
+US_Voice2 = English (US) Morgan 1.3x
+US_Voice3 = English (US) Morgan 1.3x
