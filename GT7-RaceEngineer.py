@@ -33,11 +33,12 @@ sys.stdout.write(f'{pref}?25l')		# hide cursor
 sys.stdout.flush()
 
 # get ip address from command line
-if len(sys.argv) == 3:
+if len(sys.argv) == 4:
     ip = sys.argv[1]
     language = sys.argv[2]
+    tyreTemp = float(sys.argv[3])
 else:
-    print('Run like : python3 gt7telemetry.py <playstation-ip>')
+    print('Run like : python3 gt7telemetry.py <playstation-ip> <language EN or SE> <tyre temp>')
     exit(1)
 
 absolute_path = os.path.dirname(__file__)
@@ -198,7 +199,7 @@ while True:
 			#printAt(tyreTempFL, 20, 5)
 			# If temp is high play sound and delay
 			
-			if tyreTempFL > 70.0 or tyreTempFR > 70.0 or tyreTempRL > 70.0 or tyreTempRR > 70.0:
+			if tyreTempFL > tyreTemp or tyreTempFR > tyreTemp or tyreTempRL > tyreTemp or tyreTempRR > tyreTemp:
 				
 				if overTemp == 0:
 					printAt('TYRE TEMPERATURE WARNING!!!!!', 9, 1, bold=1)
