@@ -1,0 +1,6 @@
+GT7RaceEngineer.py
+
+Versions
+0.1 - Basic display of just tyre temparatures, trigger voice warnings when set temperature hit.
+0.2 - EN and SE languages for high temperatures added.
+0.3 - config.json file added to set parameters.
