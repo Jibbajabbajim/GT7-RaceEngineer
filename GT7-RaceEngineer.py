@@ -103,9 +103,6 @@ printAt('FR:        °C', 5, 1)
 printAt('RL:        °C', 6, 1)
 printAt('RR:        °C', 7, 1)
 
-#printAt('Δ:      /       ', 22, 41)
-#printAt('Δ:      /       ', 26, 41)
-
 printAt("Laps:   /             Position:   /  ", 20, 1)
 
 #current lap
