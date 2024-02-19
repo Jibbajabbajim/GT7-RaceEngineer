@@ -57,3 +57,5 @@ Calculate remaining laps possible in the time remaining.
 STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race and provide feedback (e.g. "Two more laps needed in this stint"). Monitor tyre use and percentage and provide feedback ("You are using too much tyres/fuel to last the stint". Calculate the number of laps remaining in the race? Not sure is this is possible yet.
 
 CONFIG FILE - As the number of parameters increases, a config file may make more sense.
+
+IMPROVED AUDIO - edit the audio to include radio "beeps" and radio quality sound.
