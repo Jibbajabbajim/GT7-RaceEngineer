@@ -6,25 +6,37 @@ This work is based entirely on Bornhalls work found here:- https://github.com/Bo
 
 **Needs to be run from the terminal**
 
-Run like this (substitute with your own console's LAN IP address):
+Run like this:
 
-    python GT7-RaceEngineer.py <IP ADDRESS> <LANGUAGE> <TYRE TEMP>
-    
-IP ADDRESS
-This is your consoles ip address.
+    python GT7-RaceEngineer.py
+
+**Before running edit the config.json file**
+
+{
+	"ip" : "10.224.1.141",
+	"language" : "EN",
+	"voice" : "1",
+	"tyreTempHigh" : "90",
+	"tyreTempNormal" : "69.0"
+}
+
+"ip"
+ - This is your consoles ip address.
 	
-LANGUAGE
-This is the language of your race engineer. Current supported languages are "EN" and "SE".
+"language"
+ - This is the language/accent of your race engineer. Current supported languages/accents are "EN" and "SE".
 
-TYRE TEMP
-This is the tyre temparature in degrees centigrade that will trigger the engineer. 
+"voice"
+ - Leave set to 1. There is currently only 1 voice per language. More voices will be added.
 
-Example:
+"tyreTempHigh"
+ - This is the tyre temparature in degrees centigrade that will trigger the engineer to warn of high tyre temparatures. 
 
-    python3 GT7-RaceEngineer.py 129.168.1.123 EN 120.0
+"tyreTempNormal"
+ - NOT CURRENTLY USED. This is the tyre temparature in degrees centigrade that will trigger the engineer to advise your tyres are in the normal temparature window. 
 
-VOICE
-There is currently only 1 voice per language. More voices will be added.
+"enableLapSummary"
+ - NOT CURRENTLY USED. Leave set to "false".
 
 ## Requirements
 You will need python 3.x installed, and you need to install the salsa20 and simpleaudio modules via pip:
@@ -35,7 +47,7 @@ You will need python 3.x installed, and you need to install the salsa20 and simp
 
 ## Future Versions
 
-VOICES - More voices will be added.
+VOICES/LANGUAGES - More to be be added.
 
 TYRE TEMPERATURES - More information such as cold tyres warning and normal temp notification.
 
