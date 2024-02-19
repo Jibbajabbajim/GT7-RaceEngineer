@@ -1,4 +1,4 @@
-# GT7-RaceEngineer
+# GT7-RaceEngineer v0.3
 Python script to provide simple "race engineer" audio feedback while driving. The main goal was to assist a friend who uses PSVR during endurance type races, but this may grow into something other players could find useful.
 Current version only gives feedback when your tyres hit the temperature you input. More functionality to be added in furture versions.
 
@@ -36,7 +36,7 @@ Run like this:
  - NOT CURRENTLY USED. This is the tyre temparature in degrees centigrade that will trigger the engineer to advise your tyres are in the normal temparature window. 
 
 "enableLapSummary"
- - NOT CURRENTLY USED. Leave set to "false".
+ - NOT CURRENTLY USED. Leave set to "false". This will be used to trigger a "summary" of information at the start of each lap. E.g. "25% fuel remaining" "around 6 laps left in the race".
 
 ## Requirements
 You will need python 3.x installed, and you need to install the salsa20 and simpleaudio modules via pip:
