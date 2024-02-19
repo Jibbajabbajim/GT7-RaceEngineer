@@ -10,6 +10,7 @@ import random
 #pip3 install salsa20
 import simpleaudio as sa
 from salsa20 import Salsa20_xor
+import json
 
 # ansi prefix
 pref = "\033["
@@ -32,30 +33,17 @@ sys.stdout.write(f'{pref}?1049h')	# alt buffer
 sys.stdout.write(f'{pref}?25l')		# hide cursor
 sys.stdout.flush()
 
-# get ip address from command line
-if len(sys.argv) == 4:
-    ip = sys.argv[1]
-    language = sys.argv[2]
-    tyreTemp = float(sys.argv[3])
-else:
-    print('Run like : python3 gt7telemetry.py <playstation-ip> <language EN or SE> <tyre temp>')
-    exit(1)
+# get parameters from config.json
+with open('config.json') as config_file:
+	data = json.load(config_file)
 
-absolute_path = os.path.dirname(__file__)
-full_path1 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot1.wav")
-full_path2 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot2.wav")
-full_path3 = os.path.join(absolute_path, "audio/EN_Voice1_TyresHot3.wav")
-full_path4 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot1.wav")
-full_path5 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot2.wav")
-full_path6 = os.path.join(absolute_path, "audio/SE_Voice1_TyresHot3.wav")
+ip = data['ip']
+language = data['language']
+voice = data['voice']
+tyreTempHigh = float(data['tyreTempHigh'])
+tyreTempNormal = float(data['tyreTempNormal'])
 
 overTemp = 0
-wave_obj1 = sa.WaveObject.from_wave_file(full_path1)
-wave_obj2 = sa.WaveObject.from_wave_file(full_path2)
-wave_obj3 = sa.WaveObject.from_wave_file(full_path3)
-wave_obj4 = sa.WaveObject.from_wave_file(full_path4)
-wave_obj5 = sa.WaveObject.from_wave_file(full_path5)
-wave_obj6 = sa.WaveObject.from_wave_file(full_path6)
 
 # Create a UDP socket and bind it
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -104,12 +92,10 @@ def secondsToLaptime(seconds):
 	remaining = seconds % 60
 	return '{:01.0f}:{:06.3f}'.format(minutes, remaining)
 
-
-
 # start by sending heartbeat
 send_hb(s)
 
-printAt('GT7 Tyre Temperature Display 0.1 (ctrl-c to quit)', 1, 1, bold=1)
+printAt('GT7 Tyre Temperature Display 0.2 (ctrl-c to quit)', 1, 1, bold=1)
 
 printAt('Tyre Data', 3, 3, underline=1)
 printAt('FL:        °C', 4, 1)
@@ -117,7 +103,19 @@ printAt('FR:        °C', 5, 1)
 printAt('RL:        °C', 6, 1)
 printAt('RR:        °C', 7, 1)
 
+#printAt('Δ:      /       ', 22, 41)
+#printAt('Δ:      /       ', 26, 41)
 
+printAt("Laps:   /             Position:   /  ", 20, 1)
+
+#current lap
+#printAt('{:3.0f}'.format(curlap), 9, 7)
+#total laps
+#printAt('{:3.0f}'.format(struct.unpack('h', ddata[0x76:0x76+2])[0]), 20, 11)
+#current position
+#printAt('{:2.0f}'.format(struct.unpack('h', ddata[0x84:0x84+2])[0]), 20, 31)
+#total positions
+#printAt('{:2.0f}'.format(struct.unpack('h', ddata[0x86:0x86+2])[0]), 20, 34)
 
 sys.stdout.flush()
 
@@ -145,7 +143,15 @@ while True:
 				
 			else:
 				curLapTime = 0
-				
+			
+			#current lap
+			printAt('{:3.0f}'.format(curlap), 20, 7)
+			#total laps
+			printAt('{:3.0f}'.format(struct.unpack('h', ddata[0x76:0x76+2])[0]), 20, 11)
+			#current position
+			printAt('{:2.0f}'.format(struct.unpack('h', ddata[0x84:0x84+2])[0]), 20, 31)
+			#total positions
+			printAt('{:2.0f}'.format(struct.unpack('h', ddata[0x86:0x86+2])[0]), 20, 34)	
 					
 			cgear = struct.unpack('B', ddata[0x90:0x90+1])[0] & 0b00001111
 			sgear = struct.unpack('B', ddata[0x90:0x90+1])[0] >> 4
@@ -196,43 +202,25 @@ while True:
 			printAt('{:6.1f}'.format(struct.unpack('f', ddata[0x68:0x68+4])[0]), 6, 5)					# tyre temp RL
 			printAt('{:6.1f}'.format(struct.unpack('f', ddata[0x6C:0x6C+4])[0]), 7, 5)					# tyre temp RR
 			
-			#printAt(tyreTempFL, 20, 5)
-			# If temp is high play sound and delay
-			
-			if tyreTempFL > tyreTemp or tyreTempFR > tyreTemp or tyreTempRL > tyreTemp or tyreTempRR > tyreTemp:
+			# If any tyre temp is high play sound and delay
+			if tyreTempFL > tyreTempHigh or tyreTempFR > tyreTempHigh or tyreTempRL > tyreTempHigh or tyreTempRR > tyreTempHigh:
 				
 				if overTemp == 0:
 					printAt('TYRE TEMPERATURE WARNING!!!!!', 9, 1, bold=1)
+					
+					# Select a random message
 					tyreMessage = 0
 					tyreMessage = random.randint(1,3)
-					#printAt(, 9, 1, bold=1)
-					if tyreMessage == 1:
-						if language == "EN":
-							play_obj1 = wave_obj1.play()
-							play_obj1.wait_done()
-						else:
-							play_obj4 = wave_obj4.play()
-							play_obj4.wait_done()
-					if tyreMessage == 2:
-						if language == "EN":
-							play_obj2 = wave_obj2.play()
-							play_obj2.wait_done()
-						else:
-							play_obj5 = wave_obj5.play()
-							play_obj5.wait_done()
-					if tyreMessage == 3:
-						if language == "EN":
-							play_obj3 = wave_obj3.play()
-							play_obj3.wait_done()
-						else:
-							play_obj6 = wave_obj6.play()
-							play_obj6.wait_done()
+					
+					#Play audio file
+					fileName = "audio/" + language + "_Voice" + str(voice) + "_TyresHot" + str(tyreMessage) + ".wav"
+					absolute_path = os.path.dirname(__file__)
+					full_path1 = os.path.join(absolute_path, fileName)
+					wave_obj1 = sa.WaveObject.from_wave_file(full_path1)
+					play_obj1 = wave_obj1.play()
+					play_obj1.wait_done()
+					
 					overTemp = 1
-
-				#Play sound and delay
-				#printAt('TYRE TEMPERATURE WARNING!!!!!', 9, 1, bold=1)
-				#printAt('                             ', 9, 1, bold=1)
-
 			else:
 				printAt('                             ', 9, 1, bold=1)
 				overTemp = 0	
