@@ -8,7 +8,7 @@ This work is based entirely on Bornhalls work found here:- https://github.com/Bo
 
 Run like this (substitute with your own console's LAN IP address):
 
-    python3 GT7-RaceEngineer.py <IP ADDRESS> <LANGUAGE> <TYRE TEMP>
+    python GT7-RaceEngineer.py <IP ADDRESS> <LANGUAGE> <TYRE TEMP>
     
 IP ADDRESS
 This is your consoles ip address.
