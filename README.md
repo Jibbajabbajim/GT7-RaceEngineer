@@ -58,4 +58,6 @@ STRATEGY - Predefined strategies (Plan A, Plan B etc). Monitor during the race a
 
 CONFIG FILE - As the number of parameters increases, a config file may make more sense.
 
-IMPROVED AUDIO - edit the audio to include radio "beeps" and radio quality sound.
+IMPROVED AUDIO - Edit the audio to include radio "beeps" and radio quality sound.
+
+BRAKE BALANCE ASSIST - Monitor tyre rotation under braking to determine if the front or rear tyres are locking up first. Advise drive to move BB forward or back to compensate.
